@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "116977897136",
+    "firebase_url": "https://muv-tracker.firebaseio.com",
+    "project_id": "muv-tracker",
+    "storage_bucket": "muv-tracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:116977897136:android:5cf47b85164bae9bf8b575",
+        "android_client_info": {
+          "package_name": "com.muv.tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "116977897136-t862vpmavvq8mih15ime7g7b3ku10cth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC-BDggrGPL47P0OmO9mJl2FFS-Xz_5yuk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "116977897136-t862vpmavvq8mih15ime7g7b3ku10cth.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

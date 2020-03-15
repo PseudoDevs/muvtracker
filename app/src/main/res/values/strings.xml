@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">MUV-Tracker</string>
+
+    <string name="title_activity_dashboard">DashboardActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_home_news_and_announcement">News And Announcement</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_profile">Profile</string>
+
+
+    <string name="valid_names">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz nbsp</string>
+    <string name="valid_email">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@._</string>
+    <string name="valid_numbers">0987654321</string>
+
 </resources>
