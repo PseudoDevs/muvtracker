@@ -74,6 +74,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
     }
+
     private void dialogView(NewsAndAnnouncement newsAndAnnouncement){
         adViewNews = new AlertDialog.Builder(DashboardActivity.this).setTitle(newsAndAnnouncement.getNewsTitle()).setPositiveButton("Close",null).create();
         View view1 = LayoutInflater.from(DashboardActivity.this).inflate(R.layout.dialog_view_news_announcement,null);
