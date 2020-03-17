@@ -1,11 +1,16 @@
 package com.muv.tracker;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,71 +22,94 @@ import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
 
-    private ListView lvNews;
-    private ListViewMuvAdapter newsAdapter;
-    private ArrayList<NewsAndAnnouncement> newsAndAnnouncements;
-    private AlertDialog adViewNews;
-
-    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
-            = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-            switch (item.getItemId()) {
-                case R.id.navigation_home:
-                    Toast.makeText(DashboardActivity.this, R.string.title_home, Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.navigation_dashboard:
-                    Toast.makeText(DashboardActivity.this, R.string.title_dashboard, Toast.LENGTH_SHORT).show();
-                    return true;
-                case R.id.navigation_notifications:
-                    Toast.makeText(DashboardActivity.this, R.string.title_notifications, Toast.LENGTH_SHORT).show();
-                    return true;
-            }
-            return false;
-        }
-    };
-
+    private Client client;
+    private Intent intent;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bnvDashboard);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        getSupportFragmentManager().beginTransaction().replace(R.id.frmFragmentContainer,new HomeFragment(DashboardActivity.this,1)).commit();
 
-        loadNewsAndAnnouncement();
+        client = new Client();
+        client.setFirstname("Alex Bryan");
+        client.setMiddlename("Quilala");
+        client.setLastname("Arellano");
+        client.setEmail("alexbryanarellano2@gmail.com");
+        client.setContactNumber("09474576403");
+
     }
 
-    private void loadNewsAndAnnouncement(){
-        lvNews = findViewById(R.id.lvNews);
-
-        NewsAndAnnouncement news1 = new NewsAndAnnouncement();
-        news1.setNewsTitle("STI College Marikina Testing Testing");
-        news1.setNewsDescription("STI College Marikina Won 4 Cluster Championship in TNT Competition");
-
-        newsAndAnnouncements = new ArrayList<>();
-        newsAndAnnouncements.add(news1);
-        newsAndAnnouncements.add(news1);
-        newsAndAnnouncements.add(news1);
-
-        newsAdapter = new ListViewMuvAdapter(this);
-        newsAdapter.setNewsAndAnnouncementList(newsAndAnnouncements);
-        lvNews.setAdapter(newsAdapter.getNewsAndAnnouncementAdapter());
-        lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                dialogView(newsAndAnnouncements.get(position));
+    private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
+            = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            Fragment selectedFragment = null;
+            int bnvFlag = 0;
+            switch (item.getItemId()) {
+                case R.id.navigation_home:
+                    bnvFlag = 1;
+                    selectedFragment = new HomeFragment(DashboardActivity.this,bnvFlag);
+                    Toast.makeText(DashboardActivity.this, R.string.title_home, Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.navigation_routes:
+                    bnvFlag = 2;
+//                    Toast.makeText(DashboardActivity.this, R.string.title_dashboard, Toast.LENGTH_SHORT).show();
+                    break;
+                case R.id.navigation_tickets:
+                    bnvFlag = 3;
+//                    Toast.makeText(DashboardActivity.this, R.string.title_notifications, Toast.LENGTH_SHORT).show();
+                    break;
             }
-        });
+            if (selectedFragment == null){
+                Toast.makeText(DashboardActivity.this, "No fragments", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.frmFragmentContainer,selectedFragment).commit();
+            return true;
+        }
+    };
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_dashboard,menu);
+        return super.onCreateOptionsMenu(menu);
     }
 
-    private void dialogView(NewsAndAnnouncement newsAndAnnouncement){
-        adViewNews = new AlertDialog.Builder(DashboardActivity.this).setTitle(newsAndAnnouncement.getNewsTitle()).setPositiveButton("Close",null).create();
-        View view1 = LayoutInflater.from(DashboardActivity.this).inflate(R.layout.dialog_view_news_announcement,null);
-        TextView tvNewsDescription = view1.findViewById(R.id.tvNewsText);
-        tvNewsDescription.setText(newsAndAnnouncement.getNewsDescription());
-        adViewNews.setView(view1);
-        adViewNews.cancel();
-        adViewNews.show();
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.itm_profile){
+            String[] clientDetails = {client.getContactNumber(),client.getFirstname(),client.getMiddlename(),client.getLastname(),client.getEmail()};
+            intent = new Intent(DashboardActivity.this,EditProfileActivity.class);
+            intent.putExtra("ClientInfo",clientDetails);
+            startActivity(intent);
+            finish();
+        }
+        else if (item.getItemId() == R.id.itm_logout){
+            dialogLogout();
+        }
+        return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public void onBackPressed() {
+        dialogLogout();
+        super.onBackPressed();
+    }
+
+    private void dialogLogout(){
+        AlertDialog adLogout = new AlertDialog.Builder(DashboardActivity.this).setTitle("Logout").setMessage("Do you want to Logout?")
+                .setPositiveButton("No", null)
+                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                })
+                .create();
+        adLogout.show();
+    }
+
 }
