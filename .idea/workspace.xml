@@ -11,7 +11,13 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="34698e50-7503-4534-a9ad-a5c0fb231dae" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="34698e50-7503-4534-a9ad-a5c0fb231dae" name="Default Changelist" comment="This is the update design">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+>>>>>>> origin/master
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +30,10 @@
     <option name="CLEAR_OUTPUT_DIRECTORY" value="false" />
     <option name="REBUILD_ON_DEPENDENCY_CHANGE" value="false" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="MKJNW18908000954" />
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
@@ -31,6 +41,7 @@
       </state>
     </system>
   </component>
+<<<<<<< HEAD
   <component name="FUSProjectUsageTrigger">
     <session id="-1359149922">
       <usages-collector id="statistics.lifecycle.project">
@@ -109,32 +120,77 @@
           <provider selected="true" editor-type-id="text-editor">
             <state>
               <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+=======
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+          <provider editor-type-id="text-editor" />
+          <provider selected="true" editor-type-id="android-designer2" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1488">
+              <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+              <folding>
+                <element signature="e#1715#1732#0" expanded="true" />
+                <element signature="e#2238#2257#0" expanded="true" />
+                <element signature="e#2710#2726#0" expanded="true" />
+                <element signature="e#3013#3034#0" expanded="true" />
+                <element signature="e#3482#3509#0" expanded="true" />
+                <element signature="e#3870#3888#0" expanded="true" />
+              </folding>
+>>>>>>> origin/master
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/listview_adapter_tickets.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
               <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_digit_verifier.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="17" lean-forward="true" selection-end-line="101" selection-end-column="15" />
+              <folding>
+                <element signature="e#1659#1676#0" expanded="true" />
+                <element signature="e#2140#2158#0" expanded="true" />
+                <element signature="e#2611#2627#0" expanded="true" />
+                <element signature="e#2977#2999#0" expanded="true" />
+                <element signature="e#3174#3190#0" expanded="true" />
+              </folding>
+>>>>>>> origin/master
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/listview_adapter_routes.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="296">
               <caret line="23" column="51" selection-start-line="23" selection-start-column="51" selection-end-line="23" selection-end-column="51" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="21" column="69" lean-forward="true" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
+>>>>>>> origin/master
             </state>
           </provider>
           <provider editor-type-id="android-designer2" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_queue.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="233">
@@ -149,11 +205,22 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="68">
               <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/ListViewMuvAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+              <folding>
+                <element signature="method#getNewsAndAnnouncementAdapter#0;class#ListViewMuvAdapter#0" />
+                <element signature="method#setNewsAndAnnouncementList#0;class#ListViewMuvAdapter#0" />
+              </folding>
+>>>>>>> origin/master
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -178,6 +245,14 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
           <provider selected="true" editor-type-id="text-editor" />
           <provider editor-type-id="android-designer2" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/NewsAndAnnouncement.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="48">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+>>>>>>> origin/master
         </entry>
       </file>
     </leaf>
@@ -228,19 +303,13 @@
       </branch-storage>
     </excluded-from-favorite>
   </component>
-  <component name="GradleLocalSettings">
-    <option name="projectSyncType">
-      <map>
-        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
-      </map>
-    </option>
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/muv/tracker/NewsAndAnnouncement.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_view_news_announcement.xml" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/res/layout/listview_adapter_news_announcement.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/muv/tracker/ExampleFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
@@ -268,6 +337,16 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/muv/tracker/ListViewMuvAdapter.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/dialog_queue.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/muv/tracker/HomeFragment.java" />
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/com/muv/tracker/DashboardActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/colors.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/listview_adapter_news_announcement.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/muv/tracker/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_digit_verifier.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml" />
+>>>>>>> origin/master
       </list>
     </option>
   </component>
@@ -283,23 +362,34 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+<<<<<<< HEAD
+              <item name="muvtracker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+            </path>
+            <path>
+              <item name="muvtracker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
+=======
+              <item name="muvtracker" type="b2602c69:ProjectViewProjectNode" />
+              <item name="muvtracker" type="462c0819:PsiDirectoryNode" />
+>>>>>>> origin/master
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="AndroidView">
         <subPane>
           <expand>
             <path>
               <item name="muvtracker" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
-            </path>
-            <path>
-              <item name="muvtracker" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-            </path>
-            <path>
-              <item name="muvtracker" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="java" type="edd41e36:AndroidSourceTypeNode" />
-              <item name="tracker" type="cbb59c9e:AndroidPsiDirectoryNode" />
             </path>
             <path>
               <item name="muvtracker" type="1abcf292:AndroidViewProjectNode" />
@@ -312,26 +402,24 @@
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
+<<<<<<< HEAD
+=======
             <path>
-              <item name="muvtracker" type="b2602c69:ProjectViewProjectNode" />
-              <item name="muvtracker" type="462c0819:PsiDirectoryNode" />
+              <item name="muvtracker" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+              <item name="values" type="ddeffd01:AndroidResFolderTypeNode" />
             </path>
+>>>>>>> origin/master
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android.project.structure.last.selected" value="SDK Location" />
     <property name="android.project.structure.proportion" value="0.15" />
     <property name="android.sdk.path" value="C:/Sdk" />
@@ -365,6 +453,7 @@
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
         <option name="Android.Gradle.BeforeRunTask" enabled="true" />
@@ -482,6 +571,7 @@
       <option name="presentableId" value="Default" />
       <updated>1584298380965</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00001" summary="Date Made - 3/15/2020">
       <created>1584310553871</created>
       <option name="number" value="00001" />
@@ -495,28 +585,61 @@
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
       <updated>1584479644324</updated>
+=======
+    <task id="LOCAL-00001" summary="This is the update design">
+      <created>1584523885591</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1584523885591</updated>
+    </task>
+    <task id="LOCAL-00002" summary="This is the update design">
+      <created>1584524185881</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1584524185881</updated>
+>>>>>>> origin/master
     </task>
     <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
       <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.32980332" />
+=======
+    <frame x="-8" y="-8" width="1456" height="916" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
+      <window_info id="Capture Tool" order="1" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.16905445" />
+>>>>>>> origin/master
       <window_info id="Structure" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
       <window_info id="Image Layers" order="5" />
       <window_info id="Designer" order="6" />
       <window_info id="Favorites" order="7" side_tool="true" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Logcat" order="0" weight="0.3295082" />
+=======
+      <window_info id="Resources Explorer" order="8" />
+      <window_info anchor="bottom" id="Logcat" order="0" weight="0.5736842" />
+>>>>>>> origin/master
       <window_info anchor="bottom" id="TODO" order="1" />
-      <window_info anchor="bottom" id="Android Profiler" order="2" />
+      <window_info anchor="bottom" id="Android Profiler" order="2" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="5" show_stripe_button="false" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Build" order="6" weight="0.3295082" />
+=======
+      <window_info anchor="bottom" id="Build" order="6" weight="0.32894737" />
+>>>>>>> origin/master
       <window_info anchor="bottom" id="Run" order="7" />
       <window_info anchor="bottom" id="Debug" order="8" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -524,11 +647,17 @@
       <window_info anchor="right" id="Gradle" order="2" />
       <window_info anchor="right" id="Theme Preview" order="3" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
+<<<<<<< HEAD
       <window_info anchor="right" id="Preview" order="5" weight="0.30257186" />
+=======
+      <window_info anchor="right" id="Preview" order="5" visible="true" weight="0.32378224" />
+      <window_info anchor="right" id="Codota" order="6" />
+>>>>>>> origin/master
     </layout>
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="This is the update design" />
+    <option name="LAST_COMMIT_MESSAGE" value="This is the update design" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Date Made - 3/15/2020" />
@@ -536,6 +665,7 @@
     <option name="LAST_COMMIT_MESSAGE" value="Date Made - 3/18/2020" />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/MainActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -546,6 +676,9 @@
     <entry file="file://$PROJECT_DIR$/app/google-services.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/app/google-services.json" />
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/com/muv/tracker/BuildConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
@@ -553,6 +686,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/SignInActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -563,6 +697,10 @@
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/DigitVerifierActivity.java">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/SignInActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/DigitVerifierActivity.java" />
+>>>>>>> origin/master
     <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -574,6 +712,7 @@
       </provider>
       <provider editor-type-id="android-manifest" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_digit_verifier.xml">
       <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="android-designer2" />
@@ -582,18 +721,40 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/navigation.xml" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/DashboardActivity.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="44" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+>>>>>>> origin/master
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_view_news_announcement.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
           <caret line="25" column="43" selection-start-line="25" selection-start-column="43" selection-end-line="25" selection-end-column="43" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/MUV.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable-hdpi/Ellipse 1.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_dashboard.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="30" column="4" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
+>>>>>>> origin/master
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml">
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
@@ -630,12 +791,19 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
           <caret line="31" column="46" selection-start-line="24" selection-start-column="16" selection-end-line="31" selection-end-column="46" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/listview_adapter_news_announcement.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1608">
+          <caret line="67" column="47" selection-start-line="67" selection-start-column="47" selection-end-line="67" selection-end-column="47" />
+>>>>>>> origin/master
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/Client.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="85">
           <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
         </state>
@@ -653,10 +821,25 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="431">
           <caret line="54" column="39" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
+=======
+        <state relative-caret-position="264">
+          <caret line="23" column="55" selection-start-line="23" selection-start-column="55" selection-end-line="23" selection-end-column="55" />
+          <folding>
+            <element signature="method#getNewsAndAnnouncementAdapter#0;class#ListViewMuvAdapter#0" />
+            <element signature="method#setNewsAndAnnouncementList#0;class#ListViewMuvAdapter#0" />
+          </folding>
         </state>
       </provider>
-      <provider editor-type-id="android-designer2" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+>>>>>>> origin/master
+        </state>
+      </provider>
+    </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/Tickets.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -668,10 +851,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
           <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/NewsAndAnnouncement.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+>>>>>>> origin/master
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/ic_new_releases.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/dialog_view_news_announcement.xml">
+      <provider selected="true" editor-type-id="text-editor" />
       <provider editor-type-id="android-designer2" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/Routes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -777,17 +973,57 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+>>>>>>> origin/master
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/DashboardActivity.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_digit_verifier.xml">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" lean-forward="true" selection-end-line="101" selection-end-column="15" />
+          <folding>
+            <element signature="e#1659#1676#0" expanded="true" />
+            <element signature="e#2140#2158#0" expanded="true" />
+            <element signature="e#2611#2627#0" expanded="true" />
+            <element signature="e#2977#2999#0" expanded="true" />
+            <element signature="e#3174#3190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="-1122">
           <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
           <folding>
             <element signature="e#3813#4033#0" expanded="true" />
             <element signature="e#4032#4033#0" expanded="true" />
+=======
+        <state relative-caret-position="504">
+          <caret line="21" column="69" lean-forward="true" selection-start-line="21" selection-start-column="69" selection-end-line="21" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_sign_in.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1488">
+          <caret line="62" column="20" lean-forward="true" selection-start-line="62" selection-start-column="20" selection-end-line="62" selection-end-column="20" />
+          <folding>
+            <element signature="e#1715#1732#0" expanded="true" />
+            <element signature="e#2238#2257#0" expanded="true" />
+            <element signature="e#2710#2726#0" expanded="true" />
+            <element signature="e#3013#3034#0" expanded="true" />
+            <element signature="e#3482#3509#0" expanded="true" />
+            <element signature="e#3870#3888#0" expanded="true" />
+>>>>>>> origin/master
           </folding>
         </state>
       </provider>
+      <provider editor-type-id="android-designer2" />
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/muv/tracker/ListViewMuvAdapter.java">
       <provider selected="true" editor-type-id="text-editor">

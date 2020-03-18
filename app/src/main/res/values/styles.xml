@@ -8,6 +8,16 @@
         <item name="colorAccent">@color/colorAccent</item>
         <!--<item name="android:actionOverflowButtonStyle">@style/customOverflowButton</item>-->
     </style>
+
+    <style name="AppThemeNoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!--<item name="android:actionOverflowButtonStyle">@style/customOverflowButton</item>-->
+    </style>
+
+
     <!--<style name="customOverflowButton" parent="Theme.AppCompat.Light.DarkActionBar">-->
         <!--<item name="android:src">@drawable/ic_person</item>-->
     <!--</style>-->

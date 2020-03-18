@@ -1,7 +1,9 @@
 package com.muv.tracker;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -24,6 +26,10 @@ public class DashboardActivity extends AppCompatActivity {
 
     private Client client;
     private Intent intent;
+    private String phoneNumber;
+    private SharedPreferences mySharedPref;
+    private SharedPreferences.Editor myPrefEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,12 +39,15 @@ public class DashboardActivity extends AppCompatActivity {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.frmFragmentContainer,new HomeFragment(DashboardActivity.this,1)).commit();
 
+        mySharedPref = getSharedPreferences("Login", Context.MODE_PRIVATE);
+        phoneNumber = mySharedPref.getString("PhoneNumber",null);
+
         client = new Client();
         client.setFirstname("Alex Bryan");
         client.setMiddlename("Quilala");
         client.setLastname("Arellano");
         client.setEmail("alexbryanarellano2@gmail.com");
-        client.setContactNumber("09123456789");
+        client.setContactNumber(phoneNumber);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -97,7 +106,6 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         dialogLogout();
-        super.onBackPressed();
     }
 
     private void dialogLogout(){
@@ -106,11 +114,15 @@ public class DashboardActivity extends AppCompatActivity {
                 .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        myPrefEditor = getSharedPreferences("Login",Context.MODE_PRIVATE).edit();
+                        myPrefEditor.clear();
+                        myPrefEditor.commit();
                         finish();
                     }
                 })
                 .create();
         adLogout.show();
+
     }
 
 }

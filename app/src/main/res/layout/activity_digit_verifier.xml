@@ -24,23 +24,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="107dp"
-            android:src="@drawable/Ellipse1" />
+            android:src="@drawable/ellipse1" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="31dp"
-            android:src="@drawable/Ellipse2" />
+            android:src="@drawable/ellipse2" />
 
     </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/MUV"/>
+            android:src="@drawable/muv"/>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/tRACKER"/>
+            android:src="@drawable/tracker"/>
     </LinearLayout>
 
     <TextView
@@ -62,9 +62,10 @@
             android:hint="@string/four_pin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
+
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.button.MaterialButton
+    <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/colorPrimaryDark"

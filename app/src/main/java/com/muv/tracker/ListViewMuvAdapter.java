@@ -25,6 +25,7 @@ public class ListViewMuvAdapter {
     private ArrayList<NewsAndAnnouncement> newsAndAnnouncementArrayList;
     private ArrayList<Tickets> ticketsArrayList;
     private ArrayList<Routes> routesArrayList;
+    private android.support.v7.app.AlertDialog adViewNews;
 
     public ListViewMuvAdapter(Context myContext) {
         this.myContext = myContext;
@@ -49,20 +50,40 @@ public class ListViewMuvAdapter {
 
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
-
+                final NewsAndAnnouncement newsAndAnnouncement = newsAndAnnouncementArrayList.get(position);
                 String newsTitle = newsAndAnnouncementArrayList.get(position).getNewsTitle();
                 String newsDescription = newsAndAnnouncementArrayList.get(position).getNewsDescription();
                 LayoutInflater inflater = LayoutInflater.from(myContext);
 
+                if ((newsDescription.length()/2) > 100) {
+                    newsDescription = newsDescription.substring(0, newsDescription.length() ;
+                }
+
                 convertView = inflater.inflate(R.layout.listview_adapter_news_announcement,parent,false);
                 TextView tvNewsTitle = convertView.findViewById(R.id.tvNewsTitle);
                 TextView tvNewsText = convertView.findViewById(R.id.tvNewsText);
+                TextView tvReadMore = convertView.findViewById(R.id.tvReadMore);
+                tvReadMore.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialogViewNews(newsAndAnnouncement);
+                    }
+                });
                 tvNewsTitle.setText(newsTitle);
                 tvNewsText.setText(newsDescription);
                 return convertView;
             }
         };
         return newsAndAnnouncementAdapter;
+    }
+    private void dialogViewNews(NewsAndAnnouncement newsAndAnnouncement){
+        adViewNews = new android.support.v7.app.AlertDialog.Builder(myContext).setTitle(newsAndAnnouncement.getNewsTitle()).setPositiveButton("Close",null).create();
+        View view1 = LayoutInflater.from(myContext).inflate(R.layout.dialog_view_news_announcement,null);
+        TextView tvNewsDescription = view1.findViewById(R.id.tvNewsText);
+        tvNewsDescription.setText(newsAndAnnouncement.getNewsDescription());
+        adViewNews.setView(view1);
+        adViewNews.cancel();
+        adViewNews.show();
     }
 
     public BaseAdapter getTicketAdapter() {

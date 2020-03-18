@@ -22,7 +22,7 @@ public class HomeFragment extends Fragment {
 
     private ListViewMuvAdapter listViewMuvAdapter;
     private ArrayList<NewsAndAnnouncement> newsAndAnnouncements;
-    private AlertDialog adViewNews;
+
     private View view;
     private Context myContext;
     private int flags;
@@ -81,20 +81,22 @@ public class HomeFragment extends Fragment {
         news2.setNewsTitle("Luzon is Under Enhance Quarantine and State of Calamity");
         news2.setNewsDescription("President Duterte announce that Luzon is under Enhance Quarantine due to COVID-19 and the country is under state of calamity");
 
+        NewsAndAnnouncement news3 = new NewsAndAnnouncement();
+        news3.setNewsTitle("Testing Testing Testing Testing");
+        news3.setNewsDescription("Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing " +
+                "Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing " +
+                "Testing Testing Testing Testing Testing Testing Testing TestingTesting Testing Testing Testing Testing Testing Testing Testing");
+
+
         newsAndAnnouncements = new ArrayList<>();
         newsAndAnnouncements.add(news1);
         newsAndAnnouncements.add(news2);
-        newsAndAnnouncements.add(news2);
+        newsAndAnnouncements.add(news3);
 
         listViewMuvAdapter = new ListViewMuvAdapter(myContext);
         listViewMuvAdapter.setNewsAndAnnouncementList(newsAndAnnouncements);
         lvNews.setAdapter(listViewMuvAdapter.getNewsAndAnnouncementAdapter());
-        lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                dialogViewNews(newsAndAnnouncements.get(position));
-            }
-        });
+
     }
     private void loadTickets(){
         ListView lvTickets = view.findViewById(R.id.lvTickets);
@@ -125,14 +127,6 @@ public class HomeFragment extends Fragment {
 
 
     //----------------------------------------Dialogs------------------------------------------
-    private void dialogViewNews(NewsAndAnnouncement newsAndAnnouncement){
-        adViewNews = new AlertDialog.Builder(myContext).setTitle(newsAndAnnouncement.getNewsTitle()).setPositiveButton("Close",null).create();
-        View view1 = LayoutInflater.from(myContext).inflate(R.layout.dialog_view_news_announcement,null);
-        TextView tvNewsDescription = view1.findViewById(R.id.tvNewsText);
-        tvNewsDescription.setText(newsAndAnnouncement.getNewsDescription());
-        adViewNews.setView(view1);
-        adViewNews.cancel();
-        adViewNews.show();
-    }
+
 
 }

@@ -9,7 +9,6 @@
     <string name="title_profile">Profile</string>
     <string name="title_logout">Log Out</string>
 
-
     <string name="valid_names">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz nbsp</string>
     <string name="valid_email">ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890@._</string>
     <string name="valid_numbers">0987654321</string>
