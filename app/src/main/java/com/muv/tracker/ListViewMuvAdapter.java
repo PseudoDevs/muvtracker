@@ -56,7 +56,7 @@ public class ListViewMuvAdapter {
                 LayoutInflater inflater = LayoutInflater.from(myContext);
 
                 if ((newsDescription.length()/2) > 100) {
-                    newsDescription = newsDescription.substring(0, newsDescription.length() ;
+                    newsDescription = newsDescription.substring(0, newsDescription.length() / 2) + "...";
                 }
 
                 convertView = inflater.inflate(R.layout.listview_adapter_news_announcement,parent,false);
