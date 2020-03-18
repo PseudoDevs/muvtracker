@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
 @SuppressLint("ValidFragment")
 public class HomeFragment extends Fragment {
 
-    private ListViewMuvAdapter newsAdapter;
+    private ListViewMuvAdapter listViewMuvAdapter;
     private ArrayList<NewsAndAnnouncement> newsAndAnnouncements;
     private AlertDialog adViewNews;
     private View view;
@@ -42,32 +43,89 @@ public class HomeFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_news_announcement,container,false);
             loadNewsAndAnnouncement();
         }
+        else if (flags == 2){
+            view = inflater.inflate(R.layout.fragment_routes,container,false);
+            loadRoutes();
+        }
+        else if (flags == 3){
+            view = inflater.inflate(R.layout.fragment_tickets,container,false);
+            loadTickets();
+        }
         return view;
     }
 
+    private void loadRoutes(){
+        ListView lvRoutes = view.findViewById(R.id.lvRoutes);
+
+        Routes routes = new Routes();
+        routes.setRouteName("SSS Village to Cubao");
+        routes.setNumberQueue("52");
+        routes.setCurrentQueue("29");
+
+        ArrayList<Routes> routesArrayList = new ArrayList<>();
+        routesArrayList.add(routes);
+        listViewMuvAdapter = new ListViewMuvAdapter(myContext);
+        listViewMuvAdapter.setRoutesArrayList(routesArrayList);
+
+        lvRoutes.setAdapter(listViewMuvAdapter.getRoutesAdapter());
+
+    }
+
     private void loadNewsAndAnnouncement(){
-        ListView lvNews;lvNews = view.findViewById(R.id.lvNews);
+        ListView lvNews = view.findViewById(R.id.lvNews);
         NewsAndAnnouncement news1 = new NewsAndAnnouncement();
-        news1.setNewsTitle("STI College Marikina Testing Testing");
+        news1.setNewsTitle("STI College Marikina: TNT Cluster");
         news1.setNewsDescription("STI College Marikina Won 4 Cluster Championship in TNT Competition");
+
+        NewsAndAnnouncement news2 = new NewsAndAnnouncement();
+        news2.setNewsTitle("Luzon is Under Enhance Quarantine and State of Calamity");
+        news2.setNewsDescription("President Duterte announce that Luzon is under Enhance Quarantine due to COVID-19 and the country is under state of calamity");
 
         newsAndAnnouncements = new ArrayList<>();
         newsAndAnnouncements.add(news1);
-        newsAndAnnouncements.add(news1);
-        newsAndAnnouncements.add(news1);
+        newsAndAnnouncements.add(news2);
+        newsAndAnnouncements.add(news2);
 
-        newsAdapter = new ListViewMuvAdapter(myContext);
-        newsAdapter.setNewsAndAnnouncementList(newsAndAnnouncements);
-        lvNews.setAdapter(newsAdapter.getNewsAndAnnouncementAdapter());
+        listViewMuvAdapter = new ListViewMuvAdapter(myContext);
+        listViewMuvAdapter.setNewsAndAnnouncementList(newsAndAnnouncements);
+        lvNews.setAdapter(listViewMuvAdapter.getNewsAndAnnouncementAdapter());
         lvNews.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                dialogView(newsAndAnnouncements.get(position));
+                dialogViewNews(newsAndAnnouncements.get(position));
             }
         });
     }
+    private void loadTickets(){
+        ListView lvTickets = view.findViewById(R.id.lvTickets);
+        Tickets tickets = new Tickets();
+        tickets.setTicketNo("27");
+        tickets.setRouteName("SSS Village - Cubao");
+        tickets.setEta("1 Hour");
 
-    private void dialogView(NewsAndAnnouncement newsAndAnnouncement){
+        Tickets tickets1 = new Tickets();
+        tickets1.setTicketNo("29");
+        tickets1.setRouteName("Parang - Cubao");
+        tickets1.setEta("30 Minutes");
+
+        ArrayList<Tickets> ticketsList = new ArrayList<>();
+        ticketsList.add(tickets);
+        ticketsList.add(tickets1);
+
+        listViewMuvAdapter = new ListViewMuvAdapter(myContext);
+        listViewMuvAdapter.setTicketsArrayList(ticketsList);
+        lvTickets.setAdapter(listViewMuvAdapter.getTicketAdapter());
+       /* lvTickets.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+            }
+        });*/
+    }
+
+
+    //----------------------------------------Dialogs------------------------------------------
+    private void dialogViewNews(NewsAndAnnouncement newsAndAnnouncement){
         adViewNews = new AlertDialog.Builder(myContext).setTitle(newsAndAnnouncement.getNewsTitle()).setPositiveButton("Close",null).create();
         View view1 = LayoutInflater.from(myContext).inflate(R.layout.dialog_view_news_announcement,null);
         TextView tvNewsDescription = view1.findViewById(R.id.tvNewsText);

@@ -28,7 +28,7 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
+//        getSupportActionBar().set;
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bnvDashboard);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.frmFragmentContainer,new HomeFragment(DashboardActivity.this,1)).commit();
@@ -38,8 +38,7 @@ public class DashboardActivity extends AppCompatActivity {
         client.setMiddlename("Quilala");
         client.setLastname("Arellano");
         client.setEmail("alexbryanarellano2@gmail.com");
-        client.setContactNumber("09474576403");
-
+        client.setContactNumber("09123456789");
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -56,10 +55,12 @@ public class DashboardActivity extends AppCompatActivity {
                     break;
                 case R.id.navigation_routes:
                     bnvFlag = 2;
+                    selectedFragment = new HomeFragment(DashboardActivity.this,bnvFlag);
 //                    Toast.makeText(DashboardActivity.this, R.string.title_dashboard, Toast.LENGTH_SHORT).show();
                     break;
                 case R.id.navigation_tickets:
                     bnvFlag = 3;
+                    selectedFragment = new HomeFragment(DashboardActivity.this,bnvFlag);
 //                    Toast.makeText(DashboardActivity.this, R.string.title_notifications, Toast.LENGTH_SHORT).show();
                     break;
             }

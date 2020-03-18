@@ -1,5 +1,6 @@
 package com.muv.tracker;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -17,6 +18,7 @@ public class EditProfileActivity extends AppCompatActivity {
     private TextView tvContactNumber;
     private ImageView imvProfile;
     private Button btnChangePin;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +67,19 @@ public class EditProfileActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId()==R.id.itmSaveChanges){
-
+            toDashboard();
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        toDashboard();
+    }
+    private void toDashboard(){
+        intent = new Intent(EditProfileActivity.this,DashboardActivity.class);
+        startActivity(intent);
+        finish();
+
     }
 }
