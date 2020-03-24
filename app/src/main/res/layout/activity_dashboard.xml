@@ -8,6 +8,7 @@
     tools:context=".DashboardActivity"
     android:orientation="vertical">
 
+<!--
     <LinearLayout android:layout_above="@+id/navigation"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -27,9 +28,15 @@
             android:layout_height="match_parent"
             android:padding="5dp"></ListView>
     </LinearLayout>
+    -->
+
+    <FrameLayout android:id="@+id/frmFragmentContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/bnvDashboard" />
 
     <android.support.design.widget.BottomNavigationView
-        android:id="@+id/navigation"
+        android:id="@+id/bnvDashboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?android:attr/windowBackground"
