@@ -8,7 +8,7 @@
     android:layout_margin="20dp"
     android:orientation="vertical"
     android:gravity="center_vertical"
-    tools:context=".DigitVerifierActivity">
+    tools:context=".SignInActivity">
 
     <LinearLayout
         android:orientation="vertical"

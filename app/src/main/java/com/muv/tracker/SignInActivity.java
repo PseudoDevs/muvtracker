@@ -1,8 +1,10 @@
 package com.muv.tracker;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -18,6 +20,7 @@ public class SignInActivity extends AppCompatActivity {
     private EditText etPhoneNumber;
     private SharedPreferences mySharedPref;
     private SharedPreferences.Editor myPrefEditor;
+    private AlertDialog adLogout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,11 +35,12 @@ public class SignInActivity extends AppCompatActivity {
         tvForgotPW = findViewById(R.id.tvForgotPass);
         btnSignIn = findViewById(R.id.btnLogin);
 
-
         tvSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                intent = new Intent(SignInActivity.this,SignUpActivity.class);
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -59,4 +63,22 @@ public class SignInActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onBackPressed() {
+        dialogLogout();
+    }
+
+    private void dialogLogout(){
+        adLogout = new AlertDialog.Builder(SignInActivity.this).setTitle("Exit").setMessage("Do you want to exit the App?")
+                .setNegativeButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                }).setPositiveButton("No",null).create();
+        adLogout.show();
+    }
+
+
 }
