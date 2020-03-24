@@ -8,14 +8,14 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="@string/title_dashboard" />
+        android:id="@+id/navigation_routes"
+        android:icon="@drawable/ic_muv_routes"
+        android:title="@string/title_routes" />
 
     <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="@string/title_notifications" />
+        android:id="@+id/navigation_tickets"
+        android:icon="@drawable/ic_muv_ticket"
+        android:title="@string/title_tickets" />
 
      <!--   <item android:id="@+id/itm_person"
             android:icon="@drawable/ic_person"

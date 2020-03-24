@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView android:text="Number Of Seats"
+        android:textSize="30dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+   <LinearLayout
+       android:gravity="center"
+       android:orientation="horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content">
+       <Button android:id="@+id/btnDecrease"
+           android:text="-"
+           android:textSize="30dp"
+           android:layout_width="50dp"
+           android:layout_height="wrap_content" />
+
+       <EditText android:id="@+id/etNumberOfSeats"
+           android:enabled="false"
+           android:text="0"
+           android:textSize="40dp"
+           android:gravity="center"
+           android:layout_width="120dp"
+           android:layout_height="wrap_content" />
+
+       <Button android:id="@+id/btnIncrease"
+           android:text="+"
+           android:textSize="30dp"
+           android:layout_width="50dp"
+           android:layout_height="wrap_content" />
+   </LinearLayout>
+
+
+</LinearLayout>
