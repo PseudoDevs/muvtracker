@@ -42,19 +42,35 @@ public class DbMUVFirebase {
         String id = myRef.push().getKey();
         commuter.setIdnumber(id);
         //Task task =
-        myRef.keepSynced(true);
-      myRef.child("tblCommuter").push().setValue(commuter, new DatabaseReference.CompletionListener() {
+        //myRef.keepSynced(true);
+        setTaskStatus(myRef.child("tblCommuter").push().setValue(commuter).isSuccessful());
+
+    /*  .addOnCompleteListener(new OnCompleteListener<Void>() {
           @Override
-          public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-              if (databaseError != null){
-                  setTaskStatus(false);
-                    return;
-              }
-              else{
-                  setTaskStatus(true);
-              }
+          public void onComplete(@NonNull Task<Void> task) {
+              setTaskStatus(task.isSuccessful());
           }
-      });
+      })*/
+
+    /*  .addOnSuccessListener(new OnSuccessListener<Void>() {
+          @Override
+          public void onSuccess(Void aVoid) {
+
+          }
+      });*/
+
+     /* , new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+                if (databaseError != null){
+                    setTaskStatus(false);
+                    return;
+                }
+                else{
+                    setTaskStatus(true);
+                }
+            }
+        }*/
       /* task1.addOnCompleteListener(new OnCompleteListener() {
            @Override
            public void onComplete(@NonNull Task task) {

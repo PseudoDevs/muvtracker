@@ -61,6 +61,7 @@ public class SignUpActivity extends AppCompatActivity {
                 commuter.setMiddlename(etMiddlename.getText().toString());
                 commuter.setLastname(etLastname.getText().toString());
                 commuter.setEmail(etEmail.getText().toString());
+                commuter.setPin("");
 
               /*  final boolean[] isSuccess = new boolean[1];
                 isSuccess[0] = false;
