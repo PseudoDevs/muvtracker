@@ -5,6 +5,7 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
+import com.google.android.gms.flags.IFlagProvider;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -17,6 +18,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.concurrent.Executor;
 
 public class DbMUVFirebase {
 
@@ -35,18 +38,36 @@ public class DbMUVFirebase {
     }
 
     public boolean newCommuter(Commuter commuter){
-
-
-
         myRef = database.getReference();
-        Task task = myRef.child("tblCommuter").push().setValue(commuter);
-        task.addOnCompleteListener((Activity) myContext, new OnCompleteListener() {
-            @Override
-            public void onComplete(@NonNull Task task) {
-                setTaskStatus(task.isSuccessful());
-            }
-        });
-        return isTaskStatus();
+        String id = myRef.push().getKey();
+        commuter.setIdnumber(id);
+        //Task task =
+        myRef.keepSynced(true);
+      myRef.child("tblCommuter").push().setValue(commuter, new DatabaseReference.CompletionListener() {
+          @Override
+          public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
+              if (databaseError != null){
+                  setTaskStatus(false);
+                    return;
+              }
+              else{
+                  setTaskStatus(true);
+              }
+          }
+      });
+      /* task1.addOnCompleteListener(new OnCompleteListener() {
+           @Override
+           public void onComplete(@NonNull Task task) {
+               task.
+                if (task.isSuccessful()){
+                    setTaskStatus(true);
+                }
+           }
+       });*/
+
+
+      //  return task1;
+       return isTaskStatus();
     }
 
 

@@ -1,6 +1,8 @@
 package com.muv.tracker;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -9,7 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.SuccessContinuation;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -73,13 +75,18 @@ public class SignUpActivity extends AppCompatActivity {
 */
 
 //                boolean isCreated = isSuccess[0];
+
+              // Task task = dbMUVFirebase.newCommuter(commuter);
+
+               ;
+              //  boolean isCreated = task.isComplete();
                 boolean isCreated = dbMUVFirebase.newCommuter(commuter);
                 String message = isCreated ? "Your Account is Successfully Created" : "Failed to Create";
                 Toast.makeText(SignUpActivity.this, Boolean.toString(isCreated), Toast.LENGTH_SHORT).show();
-                if (isCreated){
+               /* if (isCreated){
                     intent = new Intent(SignUpActivity.this,SignInActivity.class);
                     startActivity(intent);
-                }
+                }*/
             }
         });
     }

@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -54,6 +55,15 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (TextUtils.isEmpty(etPhoneNumber.getText().toString()) || etPhoneNumber.getText().toString().length() == 0){
+                    etPhoneNumber.setError("Phone Number is Empty.");
+                    return;
+                }
+                else if(etPhoneNumber.getText().toString().length() < 11){
+                    etPhoneNumber.setError("The phone length is not enough.");
+                    return;
+                }
+
                 myPrefEditor = getSharedPreferences("Login", Context.MODE_PRIVATE).edit();
                 myPrefEditor.putString("PhoneNumber",etPhoneNumber.getText().toString());
                 myPrefEditor.commit();
