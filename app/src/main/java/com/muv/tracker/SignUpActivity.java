@@ -1,5 +1,6 @@
 package com.muv.tracker;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,16 +25,13 @@ public class SignUpActivity extends AppCompatActivity {
     private Button btnSignUp;
     private Commuter commuter;
     private DbMUVFirebase dbMUVFirebase;
-    private FirebaseDatabase database = FirebaseDatabase.getInstance();
-    private DatabaseReference myRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        FirebaseApp.initializeApp(SignUpActivity.this);
-          dbMUVFirebase = new DbMUVFirebase(SignUpActivity.this);
 
+        dbMUVFirebase = new DbMUVFirebase(SignUpActivity.this);
         init();
     }
     private void init(){
@@ -46,7 +44,6 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 EditText[] editTexts = {etMobilePhone,etFirstname,etMiddlename,etLastname,etEmail};
                 for (int i = 0; i < editTexts.length; i++) {
                     if (TextUtils.isEmpty(editTexts[i].getText())){
@@ -54,7 +51,6 @@ public class SignUpActivity extends AppCompatActivity {
                         return;
                     }
                 }
-
                 commuter = new Commuter();
                 commuter.setContactNumber(etMobilePhone.getText().toString());
                 commuter.setFirstname(etFirstname.getText().toString());
@@ -62,39 +58,29 @@ public class SignUpActivity extends AppCompatActivity {
                 commuter.setLastname(etLastname.getText().toString());
                 commuter.setEmail(etEmail.getText().toString());
                 commuter.setPin("");
-
-              /*  final boolean[] isSuccess = new boolean[1];
-                isSuccess[0] = false;
-                myRef = database.getReference();
-                Task task = myRef.child("").setValue(commuter);
-                task.addOnSuccessListener(new OnSuccessListener() {
-                    @Override
-                    public void onSuccess(Object o) {
-                        isSuccess[0] = true;
+                int isCreated = dbMUVFirebase.newCommuter(commuter);
+                if(isCreated == 0){
+                   Toast.makeText(SignUpActivity.this, "Please click it again", Toast.LENGTH_SHORT).show();
+                    for (int i = 0; i < editTexts.length; i++) {
+                        editTexts[i].setEnabled(false);
                     }
-                });
-*/
-
-//                boolean isCreated = isSuccess[0];
-
-              // Task task = dbMUVFirebase.newCommuter(commuter);
-
-               ;
-              //  boolean isCreated = task.isComplete();
-                boolean isCreated = dbMUVFirebase.newCommuter(commuter);
-                String message = isCreated ? "Your Account is Successfully Created" : "Failed to Create";
-                Toast.makeText(SignUpActivity.this, Boolean.toString(isCreated), Toast.LENGTH_SHORT).show();
-               /* if (isCreated){
-                    intent = new Intent(SignUpActivity.this,SignInActivity.class);
-                    startActivity(intent);
-                }*/
+                }
+                else if (isCreated == 1){
+                    Toast.makeText(SignUpActivity.this, "Successfully created your account.", Toast.LENGTH_SHORT).show();
+                    backToSignIn();
+                }
             }
         });
     }
 
     @Override
     public void onBackPressed() {
+       backToSignIn();
+    }
+
+    private void backToSignIn(){
         intent = new Intent(SignUpActivity.this,SignInActivity.class);
         startActivity(intent);
     }
+
 }

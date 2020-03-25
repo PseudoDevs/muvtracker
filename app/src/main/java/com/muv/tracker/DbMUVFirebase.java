@@ -28,7 +28,7 @@ public class DbMUVFirebase {
     private FirebaseAuth mAuth = FirebaseAuth.getInstance();
     private Context myContext;
     private boolean taskStatus;
-
+    private int flags;
     public DbMUVFirebase() {
     }
 
@@ -37,53 +37,16 @@ public class DbMUVFirebase {
         FirebaseApp.initializeApp(myContext);
     }
 
-    public boolean newCommuter(Commuter commuter){
+    public int newCommuter(Commuter commuter){
         myRef = database.getReference();
-        String id = myRef.push().getKey();
-        commuter.setIdnumber(id);
-        //Task task =
-        //myRef.keepSynced(true);
-        setTaskStatus(myRef.child("tblCommuter").push().setValue(commuter).isSuccessful());
-
-    /*  .addOnCompleteListener(new OnCompleteListener<Void>() {
-          @Override
-          public void onComplete(@NonNull Task<Void> task) {
-              setTaskStatus(task.isSuccessful());
-          }
-      })*/
-
-    /*  .addOnSuccessListener(new OnSuccessListener<Void>() {
-          @Override
-          public void onSuccess(Void aVoid) {
-
-          }
-      });*/
-
-     /* , new DatabaseReference.CompletionListener() {
-            @Override
-            public void onComplete(@Nullable DatabaseError databaseError, @NonNull DatabaseReference databaseReference) {
-                if (databaseError != null){
-                    setTaskStatus(false);
-                    return;
-                }
-                else{
-                    setTaskStatus(true);
-                }
-            }
-        }*/
-      /* task1.addOnCompleteListener(new OnCompleteListener() {
-           @Override
-           public void onComplete(@NonNull Task task) {
-               task.
-                if (task.isSuccessful()){
-                    setTaskStatus(true);
-                }
-           }
-       });*/
-
-
-      //  return task1;
-       return isTaskStatus();
+        myRef.child("tblCommuter").child(commuter.getContactNumber()).setValue(commuter)
+               .addOnCompleteListener(new OnCompleteListener<Void>() {
+                   @Override
+                   public void onComplete(@NonNull Task<Void> task) {
+                       flags = task.isSuccessful() ? 1 : 0;
+                   }
+               });
+        return flags;
     }
 
 

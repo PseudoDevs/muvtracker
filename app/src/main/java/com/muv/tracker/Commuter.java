@@ -1,7 +1,7 @@
 package com.muv.tracker;
 
 public class Commuter {
-    private String contactNumber, firstname, middlename, lastname, email,idnumber,pin;
+    private String contactNumber, firstname, middlename, lastname, email, pin;
 
     public String getContactNumber() {
         return contactNumber;
@@ -43,13 +43,6 @@ public class Commuter {
         this.email = email;
     }
 
-    public String getIdnumber() {
-        return idnumber;
-    }
-
-    public void setIdnumber(String idnumber) {
-        this.idnumber = idnumber;
-    }
 
     public String getPin() {
         return pin;

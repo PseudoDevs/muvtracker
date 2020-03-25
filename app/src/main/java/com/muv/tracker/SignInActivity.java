@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class SignInActivity extends AppCompatActivity {
 
     private Button btnSignIn;
@@ -22,11 +24,13 @@ public class SignInActivity extends AppCompatActivity {
     private SharedPreferences mySharedPref;
     private SharedPreferences.Editor myPrefEditor;
     private AlertDialog adLogout;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        mAuth = FirebaseAuth.getInstance();
         init();
     }
 
