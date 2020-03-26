@@ -44,7 +44,7 @@ public class SignUpActivity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText[] editTexts = {etMobilePhone,etFirstname,etMiddlename,etLastname,etEmail};
+               final EditText[] editTexts = {etMobilePhone,etFirstname,etMiddlename,etLastname,etEmail};
                 for (int i = 0; i < editTexts.length; i++) {
                     if (TextUtils.isEmpty(editTexts[i].getText())){
                         editTexts[i].setError(editTexts[i].getHint() + " is Empty. Please fill it up");
@@ -58,17 +58,42 @@ public class SignUpActivity extends AppCompatActivity {
                 commuter.setLastname(etLastname.getText().toString());
                 commuter.setEmail(etEmail.getText().toString());
                 commuter.setPin("");
-                int isCreated = dbMUVFirebase.newCommuter(commuter);
-                if(isCreated == 0){
-                   Toast.makeText(SignUpActivity.this, "Please click it again", Toast.LENGTH_SHORT).show();
-                    for (int i = 0; i < editTexts.length; i++) {
-                        editTexts[i].setEnabled(false);
+
+                final boolean[] isExist = new boolean[1];
+                dbMUVFirebase.checkCommuterExists(commuter.getContactNumber(), new DbMUVFirebase.CheckExist() {
+                    @Override
+                    public void isExist(boolean exists) {
+                        isExist[0] = exists;
+                        if (exists){
+                            Toast.makeText(SignUpActivity.this, "The account is already existed in our database.", Toast.LENGTH_SHORT).show();
+                        }
+                        //return;
                     }
-                }
-                else if (isCreated == 1){
-                    Toast.makeText(SignUpActivity.this, "Successfully created your account.", Toast.LENGTH_SHORT).show();
-                    backToSignIn();
-                }
+                });
+
+              /*  if (isExist[0]){
+                    return;
+                }*/
+
+                dbMUVFirebase.newCommuter(commuter,isExist[0], new DbMUVFirebase.DataStatus() {
+                    //Pass to this method.
+                    @Override
+                    public void isInserted(int flags) {
+
+                        if(flags == 0){
+                            Toast.makeText(SignUpActivity.this, "Please click it again", Toast.LENGTH_SHORT).show();
+                            for (int i = 0; i < editTexts.length; i++) {
+                                editTexts[i].setEnabled(false);
+                            }
+                        }
+                        else if (flags == 1){
+                            Toast.makeText(SignUpActivity.this, "Successfully created your account.", Toast.LENGTH_SHORT).show();
+                            backToSignIn();
+                        }
+
+                    }
+                });
+
             }
         });
     }
