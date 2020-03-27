@@ -62,16 +62,26 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (TextUtils.isEmpty(etPhoneNumber.getText().toString()) || etPhoneNumber.getText().toString().length() == 0){
+                String mobileNumber = etPhoneNumber.getText().toString();
+                if (TextUtils.isEmpty(mobileNumber ) || mobileNumber.length() == 0){
                     etPhoneNumber.setError("Phone Number is Empty.");
                     return;
                 }
-                else if(etPhoneNumber.getText().toString().length() < 11){
+                else if(mobileNumber.length() < 11){
                     etPhoneNumber.setError("The phone length is not enough.");
                     return;
                 }
+                else if(!(mobileNumber.substring(0,2).equals("09") || mobileNumber.charAt(0) == '0')){
+                    etPhoneNumber.setError("The mobile number is not valid.");
+                    return;
+                }
 
-                dbMUVFirebase.checkCommuterExists(etPhoneNumber.getText().toString(), new DbMUVFirebase.CheckExist() {
+                mobileNumber = "+63" + mobileNumber.substring(1,mobileNumber.length());
+                intent = new Intent(SignInActivity.this,OTPVerificationActivity.class);
+                intent.putExtra("mobileNumber", mobileNumber);
+                startActivity(intent);
+
+         /*       dbMUVFirebase.checkCommuterExists(etPhoneNumber.getText().toString(), new DbMUVFirebase.CheckExist() {
                     @Override
                     public void isExist(boolean exists, Commuter c) {
                         if (exists){
@@ -89,8 +99,7 @@ public class SignInActivity extends AppCompatActivity {
                         }
                     }
 
-
-                });
+                });*/
 
             }
         });

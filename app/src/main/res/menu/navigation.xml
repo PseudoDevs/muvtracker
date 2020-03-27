@@ -17,20 +17,20 @@
         android:icon="@drawable/ic_muv_ticket"
         android:title="@string/title_tickets" />
 
-     <!--   <item android:id="@+id/itm_person"
-            android:icon="@drawable/ic_person"
-            android:title="@string/title_profile"
-            app:showAsAction="ifRoom">
-            <menu>
-                <item android:id="@+id/itm_profile"
-                    android:icon="@drawable/ic_person"
-                    android:title="@string/title_profile"
-                    app:showAsAction="never"/>
-                <item android:id="@+id/itm_logout"
-                    android:icon="@drawable/ic_person"
-                    android:title="@string/title_logout"
-                    app:showAsAction="never"/>
-            </menu>
-        </item>-->
+    <!--   <item android:id="@+id/itm_person"
+           android:icon="@drawable/ic_person"
+           android:title="@string/title_profile"
+           app:showAsAction="ifRoom">
+           <menu>
+               <item android:id="@+id/itm_profile"
+                   android:icon="@drawable/ic_person"
+                   android:title="@string/title_profile"
+                   app:showAsAction="never"/>
+               <item android:id="@+id/itm_logout"
+                   android:icon="@drawable/ic_person"
+                   android:title="@string/title_logout"
+                   app:showAsAction="never"/>
+           </menu>
+       </item>-->
 
 </menu>

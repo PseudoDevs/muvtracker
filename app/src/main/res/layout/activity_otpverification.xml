@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    android:gravity="center_vertical"
+    tools:context=".OTPVerificationActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="107dp"
+                android:src="@drawable/ellipse1" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="31dp"
+                android:src="@drawable/ellipse2" />
+
+        </LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/muv"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/tracker"/>
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/otp_in"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/etOTPCode"
+            android:inputType="number"
+            android:maxLength="4"
+            android:textAlignment="center"
+            android:hint="@string/enter_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnOTPVerify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/colorWhite"
+        android:layout_marginTop="10dp"
+        android:text="@string/verify"/>
+   <!-- <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimary"
+            android:text="@string/have_account"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:layout_marginLeft="5dp"
+            android:textStyle="bold"
+            android:text="@string/signIn"/>
+
+    </LinearLayout>-->
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+       <ProgressBar android:id="@+id/pbOTPCode"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

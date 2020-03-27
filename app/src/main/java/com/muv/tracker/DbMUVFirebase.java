@@ -24,7 +24,7 @@ public class DbMUVFirebase {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
     private DatabaseReference myRef;
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
     private Context myContext;
     private boolean taskStatus;
     private int flags;

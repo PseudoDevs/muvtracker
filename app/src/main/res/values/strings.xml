@@ -16,6 +16,7 @@
 
     <!--     For Sign up and Sign In Form -->
     <string name="sign_in">Sign in your Account</string>
+    <string name="otp_in">OTP Verification</string>
     <string name="sign_up">Create your Account</string>
     <string name="log_in">LOGIN</string>
     <string name="have_account">Already Have an Account?</string>
@@ -25,6 +26,7 @@
     <string name="signIn">Sign In</string>
     <string name="register">Sign up</string>
     <string name="four_pin">Enter 4 Digit Pin</string>
+    <string name="enter_otp">Enter OTP Code</string>
     <string name="verify">VERIFY</string>
     <string name="phone_num">Enter your Number</string>
 
