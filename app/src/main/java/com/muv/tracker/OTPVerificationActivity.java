@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ public class OTPVerificationActivity extends AppCompatActivity {
     private ProgressBar pbOTPCode;
     private EditText etOTPCode;
     private Button btnVerify;
+    private TextView tvMobileNumber;
     private String myCode;
     private String mobileNumber;
     private FirebaseAuth mAuth;
@@ -42,6 +44,8 @@ public class OTPVerificationActivity extends AppCompatActivity {
 
     }
     private void init(){
+        tvMobileNumber = findViewById(R.id.tvMobileNumber);
+        tvMobileNumber.setText(mobileNumber);
         pbOTPCode = findViewById(R.id.pbOTPCode);
         etOTPCode = findViewById(R.id.etOTPCode);
         btnVerify = findViewById(R.id.btnOTPVerify);
@@ -82,6 +86,9 @@ public class OTPVerificationActivity extends AppCompatActivity {
             @Override
             public void onVerificationFailed(FirebaseException e) {
                 Toast.makeText(OTPVerificationActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                pbOTPCode.setVisibility(View.GONE);
+                intent = new Intent(OTPVerificationActivity.this,SignInActivity.class);
+                startActivity(intent);
             }
         });
 

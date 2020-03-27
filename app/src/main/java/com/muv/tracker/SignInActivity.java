@@ -138,6 +138,7 @@ public class SignInActivity extends AppCompatActivity {
             @Override
             public void onVerificationFailed(FirebaseException e) {
                 Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+
             }
         });
 
