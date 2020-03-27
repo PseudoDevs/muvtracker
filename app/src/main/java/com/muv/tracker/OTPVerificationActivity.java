@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,18 +35,29 @@ public class OTPVerificationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpverification);
         mobileNumber = getIntent().getStringExtra("mobileNumber");
+        Toast.makeText(this, mobileNumber, Toast.LENGTH_SHORT).show();
         init();
         sendVerificationCode(mobileNumber);
+
+
     }
     private void init(){
         pbOTPCode = findViewById(R.id.pbOTPCode);
-
         etOTPCode = findViewById(R.id.etOTPCode);
         btnVerify = findViewById(R.id.btnOTPVerify);
         btnVerify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                verifyCode(etOTPCode.getText().toString());
+                String code = etOTPCode.getText().toString();
+                if (TextUtils.isEmpty(code) || code.length() == 0 ){
+                    etOTPCode.setError("OTP Code is empty");
+                    return;
+                }
+                else if(code.length() < 6){
+                    etOTPCode.setError("OTP Code is not enough");
+                    return;
+                }
+                verifyCode(code);
             }
         });
     }
@@ -62,7 +74,7 @@ public class OTPVerificationActivity extends AppCompatActivity {
             public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
                 String code = phoneAuthCredential.getSmsCode();
                 if (code != null){
-                    pbOTPCode.setVisibility(View.VISIBLE);
+                    pbOTPCode.setVisibility(View.GONE);
                     verifyCode(code);
                 }
             }

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,7 +15,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.PhoneAuthCredential;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
 
 public class SignInActivity extends AppCompatActivity {
 
@@ -27,6 +36,7 @@ public class SignInActivity extends AppCompatActivity {
     private AlertDialog adLogout;
     private FirebaseAuth mAuth;
     private DbMUVFirebase dbMUVFirebase;
+    private String myCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +87,7 @@ public class SignInActivity extends AppCompatActivity {
                 }
 
                 mobileNumber = "+63" + mobileNumber.substring(1,mobileNumber.length());
+//                sendVerificationCode(mobileNumber);
                 intent = new Intent(SignInActivity.this,OTPVerificationActivity.class);
                 intent.putExtra("mobileNumber", mobileNumber);
                 startActivity(intent);
@@ -104,6 +115,51 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void sendVerificationCode(String mobileNumber){
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(mobileNumber, 60, TimeUnit.SECONDS, SignInActivity.this, new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+            @Override
+            public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                myCode = s;
+                super.onCodeSent(s, forceResendingToken);
+
+            }
+
+            @Override
+            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
+                String code = phoneAuthCredential.getSmsCode();
+                if (code != null){
+                  //  pbOTPCode.setVisibility(View.VISIBLE);
+                    verifyCode(code);
+                }
+            }
+
+            @Override
+            public void onVerificationFailed(FirebaseException e) {
+                Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
+    private void verifyCode(String code){
+        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(myCode,code);
+        signWithPhoneNumber(phoneAuthCredential);
+
+    }
+    private void signWithPhoneNumber(PhoneAuthCredential phoneAuthCredential){
+        mAuth = FirebaseAuth.getInstance();
+        mAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if (task.isSuccessful()){
+                    intent = new Intent(SignInActivity.this,DashboardActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 
     @Override

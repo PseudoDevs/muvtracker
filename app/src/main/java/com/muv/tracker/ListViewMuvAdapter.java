@@ -55,7 +55,7 @@ public class ListViewMuvAdapter {
                 String newsDescription = newsAndAnnouncementArrayList.get(position).getNewsContent();
                 LayoutInflater inflater = LayoutInflater.from(myContext);
 
-                if ((newsDescription.length()/2) > 100) {
+                if ((newsDescription.length()/3) > 100) {
                     newsDescription = newsDescription.substring(0, newsDescription.length() / 4) + "...";
                 }
 

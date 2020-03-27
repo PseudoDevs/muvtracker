@@ -18,7 +18,7 @@
 
         <ImageView
             android:id="@+id/imvNews"
-            android:layout_width="130dp"
+            android:layout_width="95dp"
             android:layout_height="match_parent"
             android:src="@mipmap/ic_launcher_round" />
 
@@ -51,7 +51,6 @@
                 android:layout_margin="5dp"
                 android:layout_weight="1"
                 android:gravity="bottom|right">
-
                 <TextView
                     android:id="@+id/tvReadMore"
                     android:layout_width="wrap_content"
@@ -64,6 +63,8 @@
             </LinearLayout>
 
         </LinearLayout>
+
+
 
     </LinearLayout>
 </android.support.design.card.MaterialCardView>
