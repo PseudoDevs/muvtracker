@@ -1,96 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-    <android.support.v7.widget.CardView
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="310dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="10dp">
+            android:layout_height="wrap_content">
 
-            <TextView android:id="@+id/tvRoute"
-                android:text="Route: SSS Village - Cubao"
-                android:textSize="25dp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:gravity="center">
 
-            <LinearLayout android:padding="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="190dp">
-                <android.support.v7.widget.CardView
-                    android:layout_width="200dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="15dp">
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/tvRoute"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Route: SSS Village - Cubao"
+                    android:textSize="18dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:padding="10dp"
+                    android:gravity="center">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="170dp"
                         android:layout_height="match_parent">
-                        <TextView android:text="Number Of Queue"
-                            android:gravity="center"
-                            android:textSize="22dp"
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="10dp">
 
-                        <TextView android:id="@+id/tvNumberQueue"
-                            android:text="0"
-                            android:textSize="80sp"
-                            android:gravity="center"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Number Of Queue"
+                                android:textSize="18dp" />
+
+                            <TextView
+                                android:id="@+id/tvNumberQueue"
+                                android:layout_width="match_parent"
+                                android:layout_height="110dp"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textSize="50sp" />
+
+                            <Button
+                                android:id="@+id/btnQueue"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Queue" />
+
+                        </LinearLayout>
+                    </android.support.v7.widget.CardView>
 
 
-                <android.support.v7.widget.CardView
-                    android:layout_width="170dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="10dp">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
+                    <android.support.v7.widget.CardView
+                        android:layout_width="170dp"
                         android:layout_height="match_parent">
-                        <TextView android:text="Current Queue"
-                            android:gravity="center"
-                            android:textSize="22dp"
+
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:padding="10dp">
 
-                        <TextView android:id="@+id/tvCurrentQueue"
-                            android:text="0"
-                            android:textSize="80sp"
-                            android:gravity="center"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:text="Current Queue"
+                                android:textSize="18dp" />
 
-                    </LinearLayout>
+                            <TextView
+                                android:id="@+id/tvCurrentQueue"
+                                android:layout_width="match_parent"
+                                android:layout_height="110dp"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textSize="50sp" />
 
-                </android.support.v7.widget.CardView>
+                            <Button
+                                android:id="@+id/btnViewQueue"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="View Schedule" />
+
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
-            <LinearLayout android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <Button android:id="@+id/btnQueue"
-                    android:text="Queue"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="35dp"/>
-                <Button android:id="@+id/btnViewQueue"
-                    android:text="View Schedule"
-                    android:layout_width="180dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"/>
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

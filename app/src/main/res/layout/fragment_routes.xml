@@ -7,14 +7,13 @@
 
     <TextView android:text="Routes"
         android:gravity="center"
-        android:textSize="40dp"
+        android:textSize="20dp"
         android:textAllCaps="true"
         android:textStyle="bold"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <ListView android:id="@+id/lvRoutes"
-        android:padding="10dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

@@ -17,6 +17,9 @@ import com.google.firebase.database.MutableData;
 import com.google.firebase.database.Transaction;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+
+
 public class DbMUVFirebase {
 
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
@@ -25,15 +28,25 @@ public class DbMUVFirebase {
     private Context myContext;
     private boolean taskStatus;
     private int flags;
+    private ArrayList<NewsAndAnnouncement> newsList;
+
 
     //Reason: We have interface DataStatus because Firebase does Async task.
-    //and they are late to give the results so you have to double click the button
-    //This really helps
+//and they are late to give the results so you have to double click the button
+//This really helps
     public interface DataStatus{
-         void isInserted(int flags);
+        void isInserted(int flags);
     }
     public interface CheckExist{
-        void isExist(boolean exists);
+        void isExist(boolean exists,Commuter c);
+    }
+    public interface LoadAccount{
+        void loadAccount(Commuter c);
+    }
+    public interface LoadNewsAndAnnouncement{
+        void loadNews(ArrayList<NewsAndAnnouncement> newsAndAnnouncements);
+    }
+    public DbMUVFirebase() {
     }
 
     public DbMUVFirebase(Context myContext) {
@@ -41,12 +54,12 @@ public class DbMUVFirebase {
         FirebaseApp.initializeApp(myContext);
     }
 
-    public void newCommuter(Commuter commuter, boolean exists, final DataStatus dataStatus){
+    public void newCommuter(Commuter commuter, final DataStatus dataStatus){
         myRef = database.getReference();
-
+/*
         if (exists){
             return;
-        }
+        }*/
             myRef.child("tblCommuter").child(commuter.getContactNumber()).setValue(commuter)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -59,26 +72,12 @@ public class DbMUVFirebase {
     }
     public void checkCommuterExists(String contactNumber, final CheckExist checkExist) {
         myRef = database.getReference();
-
-        myRef.child("tblCommuter").child(contactNumber)/*.runTransaction(new Transaction.Handler() {
-            @NonNull
-            @Override
-            public Transaction.Result doTransaction(@NonNull MutableData mutableData) {
-                if (mutableData.getValue() == null){
-
-                }
-                return Transaction.abort();
-            }
-
-            @Override
-            public void onComplete(@Nullable DatabaseError databaseError, boolean b, @Nullable DataSnapshot dataSnapshot) {
-
-            }
-        });*/
+        myRef.child("tblCommuter").child(contactNumber)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        checkExist.isExist(dataSnapshot.getValue() != null);
+                        Commuter c = dataSnapshot.getValue(Commuter.class);
+                        checkExist.isExist(dataSnapshot.getValue() != null, c);
                         boolean ch = dataSnapshot.getValue() == null;
                         Log.d("DbHelper", "onDataChange: " + ch);
                     }
@@ -87,6 +86,42 @@ public class DbMUVFirebase {
 
                     }
                 });
+    }
+    public void loadAccount(String contactNumber, final CheckExist checkExist) {
+        myRef = database.getReference();
+        myRef.child("tblCommuter").child(contactNumber)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                        boolean ch = dataSnapshot.getValue() == null;
+                        Log.d("DbHelper", "onDataChange: " + ch);
+                    }
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
+    }
+    public void loadNewsAndAnnouncement(final LoadNewsAndAnnouncement newsAndAnnouncement){
+        myRef = database.getReference("tblNews");
+        myRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+               newsList = new ArrayList<>();
+                for (DataSnapshot newsSnapshot : dataSnapshot.getChildren()) {
+                    NewsAndAnnouncement newsAndAnnouncement1 = newsSnapshot.getValue(NewsAndAnnouncement.class);
+                    newsList.add(newsAndAnnouncement1);
+            }
+                newsAndAnnouncement.loadNews(newsList);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
 

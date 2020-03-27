@@ -52,11 +52,11 @@ public class ListViewMuvAdapter {
             public View getView(int position, View convertView, ViewGroup parent) {
                 final NewsAndAnnouncement newsAndAnnouncement = newsAndAnnouncementArrayList.get(position);
                 String newsTitle = newsAndAnnouncementArrayList.get(position).getNewsTitle();
-                String newsDescription = newsAndAnnouncementArrayList.get(position).getNewsDescription();
+                String newsDescription = newsAndAnnouncementArrayList.get(position).getNewsContent();
                 LayoutInflater inflater = LayoutInflater.from(myContext);
 
                 if ((newsDescription.length()/2) > 100) {
-                    newsDescription = newsDescription.substring(0, newsDescription.length() / 2) + "...";
+                    newsDescription = newsDescription.substring(0, newsDescription.length() / 4) + "...";
                 }
 
                 convertView = inflater.inflate(R.layout.listview_adapter_news_announcement,parent,false);
@@ -80,7 +80,7 @@ public class ListViewMuvAdapter {
         adViewNews = new android.support.v7.app.AlertDialog.Builder(myContext).setTitle(newsAndAnnouncement.getNewsTitle()).setPositiveButton("Close",null).create();
         View view1 = LayoutInflater.from(myContext).inflate(R.layout.dialog_view_news_announcement,null);
         TextView tvNewsDescription = view1.findViewById(R.id.tvNewsText);
-        tvNewsDescription.setText(newsAndAnnouncement.getNewsDescription());
+        tvNewsDescription.setText(newsAndAnnouncement.getNewsContent());
         adViewNews.setView(view1);
         adViewNews.cancel();
         adViewNews.show();

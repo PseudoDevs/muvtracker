@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,11 +26,13 @@ public class SignInActivity extends AppCompatActivity {
     private SharedPreferences.Editor myPrefEditor;
     private AlertDialog adLogout;
     private FirebaseAuth mAuth;
+    private DbMUVFirebase dbMUVFirebase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+        dbMUVFirebase = new DbMUVFirebase();
         mAuth = FirebaseAuth.getInstance();
         init();
     }
@@ -68,11 +71,27 @@ public class SignInActivity extends AppCompatActivity {
                     return;
                 }
 
-                myPrefEditor = getSharedPreferences("Login", Context.MODE_PRIVATE).edit();
-                myPrefEditor.putString("PhoneNumber",etPhoneNumber.getText().toString());
-                myPrefEditor.commit();
-                intent = new Intent(SignInActivity.this,DashboardActivity.class);
-                startActivity(intent);
+                dbMUVFirebase.checkCommuterExists(etPhoneNumber.getText().toString(), new DbMUVFirebase.CheckExist() {
+                    @Override
+                    public void isExist(boolean exists, Commuter c) {
+                        if (exists){
+
+                            String fullname = c.getFirstname() + " " + c.getMiddlename().substring(0,1)+". " + c.getLastname() ;
+                            Toast.makeText(SignInActivity.this, "Welcome " + fullname, Toast.LENGTH_SHORT).show();
+                            myPrefEditor = getSharedPreferences("Login", Context.MODE_PRIVATE).edit();
+                            myPrefEditor.putString("PhoneNumber",etPhoneNumber.getText().toString());
+                            myPrefEditor.commit();
+                            intent = new Intent(SignInActivity.this,DashboardActivity.class);
+                            startActivity(intent);
+                        }
+                        else{
+                            Toast.makeText(SignInActivity.this, "Not yet exists", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+
+                });
+
             }
         });
 

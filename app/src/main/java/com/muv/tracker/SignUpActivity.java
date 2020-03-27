@@ -7,9 +7,12 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.SuccessContinuation;
@@ -40,6 +43,7 @@ public class SignUpActivity extends AppCompatActivity {
         etMiddlename = findViewById(R.id.etMiddlename);
         etLastname = findViewById(R.id.etLastname);
         etEmail = findViewById(R.id.etEmail);
+
         btnSignUp = findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,7 +63,7 @@ public class SignUpActivity extends AppCompatActivity {
                 commuter.setEmail(etEmail.getText().toString());
                 commuter.setPin("");
 
-                final boolean[] isExist = new boolean[1];
+          /*      final boolean[] isExist = new boolean[1];
                 dbMUVFirebase.checkCommuterExists(commuter.getContactNumber(), new DbMUVFirebase.CheckExist() {
                     @Override
                     public void isExist(boolean exists) {
@@ -69,17 +73,16 @@ public class SignUpActivity extends AppCompatActivity {
                         }
                         //return;
                     }
-                });
+                });*/
 
               /*  if (isExist[0]){
                     return;
                 }*/
 
-                dbMUVFirebase.newCommuter(commuter,isExist[0], new DbMUVFirebase.DataStatus() {
+                dbMUVFirebase.newCommuter(commuter, new DbMUVFirebase.DataStatus() {
                     //Pass to this method.
                     @Override
                     public void isInserted(int flags) {
-
                         if(flags == 0){
                             Toast.makeText(SignUpActivity.this, "Please click it again", Toast.LENGTH_SHORT).show();
                             for (int i = 0; i < editTexts.length; i++) {
@@ -91,6 +94,18 @@ public class SignUpActivity extends AppCompatActivity {
                             backToSignIn();
                         }
 
+                    }
+                });
+
+                etEmail.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                    @Override
+                    public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+
+                        if (actionId == EditorInfo.IME_ACTION_DONE){
+                            btnSignUp.callOnClick();
+                            return true;
+                        }
+                        return false;
                     }
                 });
 

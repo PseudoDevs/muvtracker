@@ -6,7 +6,7 @@
 
         <TextView android:text="@string/title_home_news_and_announcement"
             android:layout_marginTop="10dp"
-            android:textSize="30dp"
+            android:textSize="20dp"
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
