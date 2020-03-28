@@ -23,7 +23,6 @@ import java.util.ArrayList;
 public class HomeFragment extends Fragment {
 
     private ListViewMuvAdapter listViewMuvAdapter;
-    private ArrayList<NewsAndAnnouncement> newsAndAnnouncements;
     private DbMUVFirebase dbMUVFirebase;
 
     private View view;
