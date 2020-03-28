@@ -46,6 +46,7 @@ public class OTPVerificationActivity extends AppCompatActivity {
     private void init(){
         tvMobileNumber = findViewById(R.id.tvMobileNumber);
         tvMobileNumber.setText(mobileNumber);
+
         pbOTPCode = findViewById(R.id.pbOTPCode);
         etOTPCode = findViewById(R.id.etOTPCode);
         btnVerify = findViewById(R.id.btnOTPVerify);
