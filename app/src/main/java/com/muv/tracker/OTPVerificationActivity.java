@@ -34,7 +34,6 @@ public class OTPVerificationActivity extends AppCompatActivity {
     private String mobileNumber;
     private FirebaseAuth mAuth;
     private Intent intent;
-    private SharedPreferences mySharedPref;
     private SharedPreferences.Editor myPrefEditor;
 
     @Override
@@ -45,8 +44,6 @@ public class OTPVerificationActivity extends AppCompatActivity {
         Toast.makeText(this, mobileNumber, Toast.LENGTH_SHORT).show();
         init();
         sendVerificationCode(mobileNumber);
-
-
     }
     private void init(){
         tvMobileNumber = findViewById(R.id.tvMobileNumber);
