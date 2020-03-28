@@ -57,11 +57,6 @@ public class SignInActivity extends AppCompatActivity {
         init();
     }
 
-    private void isSignedIn(){
-
-
-    }
-
     private void init(){
         pbSignIn = findViewById(R.id.pbSignIn);
         pbSignIn.setVisibility(View.GONE);
@@ -107,6 +102,7 @@ public class SignInActivity extends AppCompatActivity {
                             intent.putExtra("mobileNumber", mobileNumber);
                             startActivity(intent);
                             pbSignIn.setVisibility(View.GONE);
+                            finish();
 
                        /*     //String fullname = c.getFirstname() + " " + c.getMiddlename().substring(0,1)+". " + c.getLastname() ;
                             Toast.makeText(SignInActivity.this, "Welcome " + fullname, Toast.LENGTH_SHORT).show();
