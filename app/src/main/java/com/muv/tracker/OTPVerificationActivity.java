@@ -1,5 +1,6 @@
 package com.muv.tracker;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
@@ -108,6 +109,10 @@ public class OTPVerificationActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    myPrefEditor = getSharedPreferences("Login", Context.MODE_PRIVATE).edit();
+                    myPrefEditor.putString("mobileNumber",mobileNumber);
+                    myPrefEditor.putBoolean("isSignedIn",true);
+                    myPrefEditor.commit();
                     pbOTPCode.setVisibility(View.GONE);
                     intent = new Intent(OTPVerificationActivity.this,DashboardActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);

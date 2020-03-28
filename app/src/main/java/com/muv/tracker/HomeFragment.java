@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,7 +44,6 @@ public class HomeFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        dbMUVFirebase = new DbMUVFirebase();
         if (flags == 1){
             view = inflater.inflate(R.layout.fragment_news_announcement,container,false);
             loadNewsAndAnnouncement();
@@ -73,44 +73,24 @@ public class HomeFragment extends Fragment {
         listViewMuvAdapter.setRoutesArrayList(routesArrayList);
 
         lvRoutes.setAdapter(listViewMuvAdapter.getRoutesAdapter());
-
     }
 
     private void loadNewsAndAnnouncement(){
+        dbMUVFirebase = new DbMUVFirebase();
         lvNews = view.findViewById(R.id.lvNews);
         listViewMuvAdapter = new ListViewMuvAdapter(myContext);
-       /* final NewsAndAnnouncement[] p = new NewsAndAnnouncement[1];
+        final ProgressBar pbNews = view.findViewById(R.id.pbNews);
+        pbNews.setVisibility(View.VISIBLE);
         dbMUVFirebase.loadNewsAndAnnouncement(new DbMUVFirebase.LoadNewsAndAnnouncement() {
             @Override
             public void loadNews(ArrayList<NewsAndAnnouncement> newsAndAnnouncements) {
-                 p[0] = newsAndAnnouncements.get(0);                *//*listViewMuvAdapter.setNewsAndAnnouncementList(newsAndAnnouncements);
-                lvNews.setAdapter(listViewMuvAdapter.getNewsAndAnnouncementAdapter());*//*
+
+               // Toast.makeText(myContext, newsAndAnnouncements.get(0).getNewsTitle(), Toast.LENGTH_SHORT).show();
+                listViewMuvAdapter.setNewsAndAnnouncementList(newsAndAnnouncements);
+                lvNews.setAdapter(listViewMuvAdapter.getNewsAndAnnouncementAdapter());
+                pbNews.setVisibility(View.GONE);
             }
-        });*/
-//        Toast.makeText(myContext, p[0].getNewsContent(), Toast.LENGTH_SHORT).show();
-
-        NewsAndAnnouncement news1 = new NewsAndAnnouncement();
-        news1.setNewsTitle("STI College Marikina: TNT Cluster");
-        news1.setNewsContent("STI College Marikina Won 4 Cluster Championship in TNT Competition");
-
-        NewsAndAnnouncement news2 = new NewsAndAnnouncement();
-        news2.setNewsTitle("Luzon is Under Enhance Quarantine and State of Calamity");
-        news2.setNewsContent("President Duterte announce that Luzon is under Enhance Quarantine due to COVID-19 and the country is under state of calamity");
-
-        NewsAndAnnouncement news3 = new NewsAndAnnouncement();
-        news3.setNewsTitle("Testing Testing Testing Testing");
-        news3.setNewsContent("Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing " +
-                "Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing Testing " +
-                "Testing Testing Testing Testing Testing Testing Testing TestingTesting Testing Testing Testing Testing Testing Testing Testing");
-
-        newsAndAnnouncements = new ArrayList<>();
-        newsAndAnnouncements.add(news1);
-        newsAndAnnouncements.add(news2);
-        newsAndAnnouncements.add(news3);
-        listViewMuvAdapter.setNewsAndAnnouncementList(newsAndAnnouncements);
-        lvNews.setAdapter(listViewMuvAdapter.getNewsAndAnnouncementAdapter());
-
-
+        });
     }
     private void loadTickets(){
         ListView lvTickets = view.findViewById(R.id.lvTickets);

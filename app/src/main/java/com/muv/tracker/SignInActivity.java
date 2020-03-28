@@ -12,6 +12,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,18 +37,34 @@ public class SignInActivity extends AppCompatActivity {
     private DbMUVFirebase dbMUVFirebase;
     private String mobileNumber;
     private SharedPreferences mySharedPref;
-    private SharedPreferences.Editor myPrefEditor;
+    private ProgressBar pbSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        mySharedPref = getSharedPreferences("Login",Context.MODE_PRIVATE);
+        boolean isSignedIn = mySharedPref.getBoolean("isSignedIn",false);
+        if (isSignedIn){
+            mobileNumber = mySharedPref.getString("mobileNumber",null);
+            intent = new Intent(SignInActivity.this,DashboardActivity.class);
+            intent.putExtra("mobileNumber",mobileNumber);
+            startActivity(intent);
+        }
         dbMUVFirebase = new DbMUVFirebase();
         mAuth = FirebaseAuth.getInstance();
         init();
     }
 
+    private void isSignedIn(){
+
+
+    }
+
     private void init(){
+        pbSignIn = findViewById(R.id.pbSignIn);
+        pbSignIn.setVisibility(View.GONE);
         etPhoneNumber = findViewById(R.id.etPhoneNum);
         tvSignUp = findViewById(R.id.tvsignUp);
         btnSignIn = findViewById(R.id.btnLogin);
@@ -65,6 +82,7 @@ public class SignInActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pbSignIn.setVisibility(View.VISIBLE);
                 mobileNumber = etPhoneNumber.getText().toString();
                 if (TextUtils.isEmpty(mobileNumber ) || mobileNumber.length() == 0){
                     etPhoneNumber.setError("Phone Number is Empty.");
@@ -84,9 +102,11 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void isExist(boolean exists, Commuter c) {
                         if (exists){
+
                             intent = new Intent(SignInActivity.this,OTPVerificationActivity.class);
                             intent.putExtra("mobileNumber", mobileNumber);
                             startActivity(intent);
+                            pbSignIn.setVisibility(View.GONE);
 
                        /*     //String fullname = c.getFirstname() + " " + c.getMiddlename().substring(0,1)+". " + c.getLastname() ;
                             Toast.makeText(SignInActivity.this, "Welcome " + fullname, Toast.LENGTH_SHORT).show();
@@ -97,6 +117,7 @@ public class SignInActivity extends AppCompatActivity {
                             startActivity(intent);*/
                         }
                         else{
+                            pbSignIn.setVisibility(View.GONE);
                             Toast.makeText(SignInActivity.this, "Your account is not exists in our database.", Toast.LENGTH_SHORT).show();
                         }
                     }

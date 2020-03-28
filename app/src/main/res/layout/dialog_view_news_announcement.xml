@@ -19,12 +19,24 @@
         android:textStyle="bold"
         android:textSize="24sp" />-->
 
-    <TextView android:id="@+id/tvNewsText"
-        android:padding="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="asdfkljashdfjaksdfuqwer"
-        android:textSize="18sp" />
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView android:id="@+id/tvNewsText"
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Sample News Content"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </ScrollView>
+
+
+
 
 
 </LinearLayout>

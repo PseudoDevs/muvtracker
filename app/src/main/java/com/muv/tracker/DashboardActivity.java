@@ -38,14 +38,14 @@ public class DashboardActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-//        getSupportActionBar().set;
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+        mAuth = FirebaseAuth.getInstance();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bnvDashboard);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.frmFragmentContainer,new HomeFragment(DashboardActivity.this,1)).commit();
 
         mySharedPref = getSharedPreferences("Login", Context.MODE_PRIVATE);
-        phoneNumber = mySharedPref.getString("PhoneNumber",null);
+        phoneNumber = mySharedPref.getString("mobileNumber",null);
 
         client = new Client();
         client.setFirstname("Alex Bryan");
@@ -123,12 +123,13 @@ public class DashboardActivity extends AppCompatActivity {
                         myPrefEditor.clear();
                         myPrefEditor.commit();
                         mAuth.signOut();
+                        intent = new Intent(DashboardActivity.this,SignInActivity.class);
+                        startActivity(intent);
                         finish();
                     }
                 })
                 .create();
         adLogout.show();
-
     }
 
 }
