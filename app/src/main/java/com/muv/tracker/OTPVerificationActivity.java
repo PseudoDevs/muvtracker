@@ -1,6 +1,7 @@
 package com.muv.tracker;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,6 +33,9 @@ public class OTPVerificationActivity extends AppCompatActivity {
     private String mobileNumber;
     private FirebaseAuth mAuth;
     private Intent intent;
+    private SharedPreferences mySharedPref;
+    private SharedPreferences.Editor myPrefEditor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,7 @@ public class OTPVerificationActivity extends AppCompatActivity {
                     etOTPCode.setError("OTP Code is not enough");
                     return;
                 }
+                pbOTPCode.setVisibility(View.VISIBLE);
                 verifyCode(code);
             }
         });
@@ -72,7 +77,6 @@ public class OTPVerificationActivity extends AppCompatActivity {
             public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                 myCode = s;
                 super.onCodeSent(s, forceResendingToken);
-
             }
 
             @Override
@@ -80,7 +84,6 @@ public class OTPVerificationActivity extends AppCompatActivity {
                 String code = phoneAuthCredential.getSmsCode();
                 if (code != null){
                     pbOTPCode.setVisibility(View.GONE);
-                    verifyCode(code);
                 }
             }
 
@@ -98,7 +101,6 @@ public class OTPVerificationActivity extends AppCompatActivity {
     private void verifyCode(String code){
         PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(myCode,code);
         signWithPhoneNumber(phoneAuthCredential);
-
     }
     private void signWithPhoneNumber(PhoneAuthCredential phoneAuthCredential){
         mAuth = FirebaseAuth.getInstance();
@@ -106,6 +108,7 @@ public class OTPVerificationActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()){
+                    pbOTPCode.setVisibility(View.GONE);
                     intent = new Intent(OTPVerificationActivity.this,DashboardActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);

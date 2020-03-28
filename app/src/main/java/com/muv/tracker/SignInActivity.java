@@ -29,14 +29,14 @@ public class SignInActivity extends AppCompatActivity {
 
     private Button btnSignIn;
     private Intent intent;
-    private TextView tvSignUp, tvForgotPW;
+    private TextView tvSignUp;
     private EditText etPhoneNumber;
-    private SharedPreferences mySharedPref;
-    private SharedPreferences.Editor myPrefEditor;
     private AlertDialog adLogout;
     private FirebaseAuth mAuth;
     private DbMUVFirebase dbMUVFirebase;
-    private String myCode;
+    private String mobileNumber;
+    private SharedPreferences mySharedPref;
+    private SharedPreferences.Editor myPrefEditor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +50,6 @@ public class SignInActivity extends AppCompatActivity {
     private void init(){
         etPhoneNumber = findViewById(R.id.etPhoneNum);
         tvSignUp = findViewById(R.id.tvsignUp);
-        tvForgotPW = findViewById(R.id.tvForgotPass);
         btnSignIn = findViewById(R.id.btnLogin);
 
         tvSignUp.setOnClickListener(new View.OnClickListener() {
@@ -62,17 +61,11 @@ public class SignInActivity extends AppCompatActivity {
             }
         });
 
-        tvForgotPW.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
 
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String mobileNumber = etPhoneNumber.getText().toString();
+                mobileNumber = etPhoneNumber.getText().toString();
                 if (TextUtils.isEmpty(mobileNumber ) || mobileNumber.length() == 0){
                     etPhoneNumber.setError("Phone Number is Empty.");
                     return;
@@ -85,82 +78,34 @@ public class SignInActivity extends AppCompatActivity {
                     etPhoneNumber.setError("The mobile number is not valid.");
                     return;
                 }
-
                 mobileNumber = "+63" + mobileNumber.substring(1,mobileNumber.length());
-//                sendVerificationCode(mobileNumber);
-                intent = new Intent(SignInActivity.this,OTPVerificationActivity.class);
-                intent.putExtra("mobileNumber", mobileNumber);
-                startActivity(intent);
 
-         /*       dbMUVFirebase.checkCommuterExists(etPhoneNumber.getText().toString(), new DbMUVFirebase.CheckExist() {
+                dbMUVFirebase.checkCommuterExists(etPhoneNumber.getText().toString(), new DbMUVFirebase.CheckExist() {
                     @Override
                     public void isExist(boolean exists, Commuter c) {
                         if (exists){
+                            intent = new Intent(SignInActivity.this,OTPVerificationActivity.class);
+                            intent.putExtra("mobileNumber", mobileNumber);
+                            startActivity(intent);
 
-                            String fullname = c.getFirstname() + " " + c.getMiddlename().substring(0,1)+". " + c.getLastname() ;
+                       /*     //String fullname = c.getFirstname() + " " + c.getMiddlename().substring(0,1)+". " + c.getLastname() ;
                             Toast.makeText(SignInActivity.this, "Welcome " + fullname, Toast.LENGTH_SHORT).show();
                             myPrefEditor = getSharedPreferences("Login", Context.MODE_PRIVATE).edit();
                             myPrefEditor.putString("PhoneNumber",etPhoneNumber.getText().toString());
                             myPrefEditor.commit();
                             intent = new Intent(SignInActivity.this,DashboardActivity.class);
-                            startActivity(intent);
+                            startActivity(intent);*/
                         }
                         else{
-                            Toast.makeText(SignInActivity.this, "Not yet exists", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignInActivity.this, "Your account is not exists in our database.", Toast.LENGTH_SHORT).show();
                         }
                     }
 
-                });*/
+                });
 
             }
         });
 
-    }
-
-    private void sendVerificationCode(String mobileNumber){
-        PhoneAuthProvider.getInstance().verifyPhoneNumber(mobileNumber, 60, TimeUnit.SECONDS, SignInActivity.this, new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
-            @Override
-            public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                myCode = s;
-                super.onCodeSent(s, forceResendingToken);
-
-            }
-
-            @Override
-            public void onVerificationCompleted(PhoneAuthCredential phoneAuthCredential) {
-                String code = phoneAuthCredential.getSmsCode();
-                if (code != null){
-                  //  pbOTPCode.setVisibility(View.VISIBLE);
-                    verifyCode(code);
-                }
-            }
-
-            @Override
-            public void onVerificationFailed(FirebaseException e) {
-                Toast.makeText(SignInActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-    }
-    private void verifyCode(String code){
-        PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(myCode,code);
-        signWithPhoneNumber(phoneAuthCredential);
-
-    }
-    private void signWithPhoneNumber(PhoneAuthCredential phoneAuthCredential){
-        mAuth = FirebaseAuth.getInstance();
-        mAuth.signInWithCredential(phoneAuthCredential).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if (task.isSuccessful()){
-                    intent = new Intent(SignInActivity.this,DashboardActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                }
-            }
-        });
     }
 
     @Override

@@ -73,14 +73,14 @@
         android:layout_marginTop="10dp"
         android:text="@string/log_in"/>
 
-    <TextView
+ <!--   <TextView
         android:id="@+id/tvForgotPass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:textSize="18sp"
         android:textColor="@color/colorPrimary"
-        android:text="@string/forgot_pass"/>
+        android:text="@string/forgot_pass"/>-->
 
 
     <LinearLayout

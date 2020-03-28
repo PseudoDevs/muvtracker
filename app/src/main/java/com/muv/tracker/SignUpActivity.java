@@ -15,15 +15,10 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.SuccessContinuation;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.FirebaseApp;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
 public class SignUpActivity extends AppCompatActivity {
 
     private Intent intent;
+    private TextView tvSignIn;
     private EditText etMobilePhone, etFirstname, etMiddlename, etLastname, etEmail;
     private Button btnSignUp;
     private Commuter commuter;
@@ -44,6 +39,14 @@ public class SignUpActivity extends AppCompatActivity {
         etLastname = findViewById(R.id.etLastname);
         etEmail = findViewById(R.id.etEmail);
 
+        tvSignIn = findViewById(R.id.tvSignin);
+        tvSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                backToSignIn();
+            }
+        });
+
         btnSignUp = findViewById(R.id.btnSignUp);
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,37 +66,16 @@ public class SignUpActivity extends AppCompatActivity {
                 commuter.setEmail(etEmail.getText().toString());
                 commuter.setPin("");
 
-          /*      final boolean[] isExist = new boolean[1];
                 dbMUVFirebase.checkCommuterExists(commuter.getContactNumber(), new DbMUVFirebase.CheckExist() {
                     @Override
-                    public void isExist(boolean exists) {
-                        isExist[0] = exists;
+                    public void isExist(boolean exists, Commuter c) {
                         if (exists){
-                            Toast.makeText(SignUpActivity.this, "The account is already existed in our database.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(SignUpActivity.this, "The account is already exists", Toast.LENGTH_SHORT).show();
+                            return;
                         }
-                        //return;
-                    }
-                });*/
-
-              /*  if (isExist[0]){
-                    return;
-                }*/
-
-                dbMUVFirebase.newCommuter(commuter, new DbMUVFirebase.DataStatus() {
-                    //Pass to this method.
-                    @Override
-                    public void isInserted(int flags) {
-                        if(flags == 0){
-                            Toast.makeText(SignUpActivity.this, "Please click it again", Toast.LENGTH_SHORT).show();
-                            for (int i = 0; i < editTexts.length; i++) {
-                                editTexts[i].setEnabled(false);
-                            }
+                        else{
+                            createAccount(commuter);
                         }
-                        else if (flags == 1){
-                            Toast.makeText(SignUpActivity.this, "Successfully created your account.", Toast.LENGTH_SHORT).show();
-                            backToSignIn();
-                        }
-
                     }
                 });
 
@@ -108,7 +90,26 @@ public class SignUpActivity extends AppCompatActivity {
                         return false;
                     }
                 });
+            }
+        });
+    }
 
+    private void createAccount(Commuter c1){
+        final EditText[] editTexts = {etMobilePhone,etFirstname,etMiddlename,etLastname,etEmail};
+        dbMUVFirebase.newCommuter(c1, new DbMUVFirebase.DataStatus() {
+            //Pass to this method.
+            @Override
+            public void isInserted(int flags) {
+                if(flags == 0){
+                    Toast.makeText(SignUpActivity.this, "Please click it again", Toast.LENGTH_SHORT).show();
+                    for (int i = 0; i < editTexts.length; i++) {
+                        editTexts[i].setEnabled(false);
+                    }
+                }
+                else if (flags == 1){
+                    Toast.makeText(SignUpActivity.this, "Successfully created your account.", Toast.LENGTH_SHORT).show();
+                    backToSignIn();
+                }
             }
         });
     }

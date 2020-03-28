@@ -20,6 +20,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.util.ArrayList;
 
 public class DashboardActivity extends AppCompatActivity {
@@ -29,12 +31,15 @@ public class DashboardActivity extends AppCompatActivity {
     private String phoneNumber;
     private SharedPreferences mySharedPref;
     private SharedPreferences.Editor myPrefEditor;
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 //        getSupportActionBar().set;
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bnvDashboard);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         getSupportFragmentManager().beginTransaction().replace(R.id.frmFragmentContainer,new HomeFragment(DashboardActivity.this,1)).commit();
@@ -117,6 +122,7 @@ public class DashboardActivity extends AppCompatActivity {
                         myPrefEditor = getSharedPreferences("Login",Context.MODE_PRIVATE).edit();
                         myPrefEditor.clear();
                         myPrefEditor.commit();
+                        mAuth.signOut();
                         finish();
                     }
                 })
