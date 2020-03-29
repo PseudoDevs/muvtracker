@@ -32,13 +32,17 @@ public class DashboardActivity extends AppCompatActivity {
     private SharedPreferences mySharedPref;
     private SharedPreferences.Editor myPrefEditor;
     private FirebaseAuth mAuth;
+//    private String[] userInfo;
+    private DbMUVFirebase dbMUVFirebase;
+    private String mobileNumber;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-
+        dbMUVFirebase = new DbMUVFirebase();
         mAuth = FirebaseAuth.getInstance();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.bnvDashboard);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -46,13 +50,12 @@ public class DashboardActivity extends AppCompatActivity {
 
         mySharedPref = getSharedPreferences("Login", Context.MODE_PRIVATE);
         phoneNumber = mySharedPref.getString("mobileNumber",null);
+//        userInfo = getIntent().getStringArrayExtra("userInfo");
 
-        client = new Client();
-        client.setFirstname("Alex Bryan");
-        client.setMiddlename("Quilala");
-        client.setLastname("Arellano");
-        client.setEmail("alexbryanarellano2@gmail.com");
-        client.setContactNumber(phoneNumber);
+        mobileNumber = "0" + phoneNumber.substring(3,phoneNumber.length());
+       // Toast.makeText(this, mobileNumber, Toast.LENGTH_SHORT).show();
+
+
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -96,11 +99,33 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.itm_profile){
-            String[] clientDetails = {client.getContactNumber(),client.getFirstname(),client.getMiddlename(),client.getLastname(),client.getEmail()};
-            intent = new Intent(DashboardActivity.this,EditProfileActivity.class);
-            intent.putExtra("ClientInfo",clientDetails);
-            startActivity(intent);
-            finish();
+
+            client = new Client();
+            dbMUVFirebase.checkCommuterExists(mobileNumber, new DbMUVFirebase.CheckExist() {
+                @Override
+                public void isExist(boolean exists, Commuter c) {
+                    if (exists){
+                        Toast.makeText(DashboardActivity.this, "User exists", Toast.LENGTH_SHORT).show();
+                        client.setFirstname(c.getFirstname());
+                        client.setMiddlename(c.getMiddlename());
+                        client.setLastname(c.getLastname());
+                        client.setEmail(c.getEmail());
+                        client.setContactNumber(phoneNumber);
+
+                        String[] clientDetails = {client.getContactNumber(),client.getFirstname(),client.getMiddlename(),client.getLastname(),client.getEmail()};
+                        intent = new Intent(DashboardActivity.this,EditProfileActivity.class);
+                        intent.putExtra("userInfo",clientDetails);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(DashboardActivity.this, "User does not exists", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+
+
         }
         else if (item.getItemId() == R.id.itm_logout){
             dialogLogout();

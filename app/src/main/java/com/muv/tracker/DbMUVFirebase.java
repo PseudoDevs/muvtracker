@@ -93,7 +93,6 @@ public class DbMUVFirebase {
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                         boolean ch = dataSnapshot.getValue() == null;
                         Log.d("DbHelper", "onDataChange: " + ch);
                     }

@@ -35,12 +35,13 @@ public class OTPVerificationActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private Intent intent;
     private SharedPreferences.Editor myPrefEditor;
-
+    private String[] userInfo;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_otpverification);
         mobileNumber = getIntent().getStringExtra("mobileNumber");
+        userInfo = getIntent().getStringArrayExtra("userInfo");
         Toast.makeText(this, mobileNumber, Toast.LENGTH_SHORT).show();
         init();
         sendVerificationCode(mobileNumber);
@@ -91,6 +92,7 @@ public class OTPVerificationActivity extends AppCompatActivity {
                 pbOTPCode.setVisibility(View.GONE);
                 intent = new Intent(OTPVerificationActivity.this,SignInActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -113,7 +115,9 @@ public class OTPVerificationActivity extends AppCompatActivity {
                     pbOTPCode.setVisibility(View.GONE);
                     intent = new Intent(OTPVerificationActivity.this,DashboardActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    intent.putExtra("userInfo",userInfo);
                     startActivity(intent);
+                    finish();
                 }
             }
         });

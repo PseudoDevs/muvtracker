@@ -97,9 +97,10 @@ public class SignInActivity extends AppCompatActivity {
                     @Override
                     public void isExist(boolean exists, Commuter c) {
                         if (exists){
-
+                            String[] userInfo = {mobileNumber, c.getFirstname(), c.getMiddlename(), c.getLastname(), c.getEmail()};
                             intent = new Intent(SignInActivity.this,OTPVerificationActivity.class);
                             intent.putExtra("mobileNumber", mobileNumber);
+                            intent.putExtra("userInfo", userInfo);
                             startActivity(intent);
                             pbSignIn.setVisibility(View.GONE);
                             finish();

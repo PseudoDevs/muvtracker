@@ -188,8 +188,8 @@ public class ListViewMuvAdapter {
         private AlertDialog adViewQueue;
         private BaseAdapter adapViewQueue;
         private ArrayList<ViewQueue> viewQueueArrayList;
-        private int noOfSeats = 0;
-
+        private int noOfSeats;
+        private EditText etNoOfSeats;
         public RoutesDialogHolder(Context context) {
             this.context = context;
         }
@@ -208,24 +208,27 @@ public class ListViewMuvAdapter {
             View view =  LayoutInflater.from(context).inflate(R.layout.dialog_queue,null);
 
 
-            final EditText etNoOfSeats = view.findViewById(R.id.etNumberOfSeats);
+            etNoOfSeats = view.findViewById(R.id.etNumberOfSeats);
+           // etNoOfSeats.setText(noOfSeats);
             Button btnDecrease = view.findViewById(R.id.btnDecrease);
             btnDecrease.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    etNoOfSeats.setText(Integer.toString(noOfSeats));
                     noOfSeats--;
                     if (noOfSeats < 0) {
                         noOfSeats = 0;
                     }
-                    etNoOfSeats.setText(Integer.toString(noOfSeats));
+
                 }
             });
             Button btnIncrease = view.findViewById(R.id.btnIncrease);
             btnIncrease.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    etNoOfSeats.setText(Integer.toString(noOfSeats));
                    noOfSeats++;
-                   etNoOfSeats.setText(Integer.toString(noOfSeats));
+
                 }
             });
 
